@@ -1,4 +1,5 @@
 ﻿using Catalogo_API.Context;
+using Catalogo_API.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,5 +14,11 @@ public class CategoriasController : ControllerBase
     public CategoriasController(CatalogoDbContext context)
     {
         _context = context;
+    }
+
+    [HttpGet]
+    public ActionResult<IEnumerable<Categoria>> Get()
+    {
+        return _context.Categorias.ToList();
     }
 }
